@@ -1,12 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import ColourPaletteScreen from './screens/ColourPaletteScreen';
+import TriadicColourPaletteScreen from './screens/TradicColourPaletteScreen';
+import HomeScreen from './screens/HomeScreen';
 
 export default function App() {
+  const Stack = createStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer >
+      <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen name='Home' component={HomeScreen}/>
+        <Stack.Screen name='ColourPalette' component={ColourPaletteScreen}/>
+        <Stack.Screen name='TriadicPalette' component={TriadicColourPaletteScreen}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
